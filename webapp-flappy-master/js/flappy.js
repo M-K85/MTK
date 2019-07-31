@@ -92,7 +92,7 @@ function boundaryChecker(){
 function clickHandler(event) {
   game.add.sprite(event.x,event.y,"playerImg");
   changeScore();
-
+  playerJump();
 }
 
 
