@@ -13,8 +13,10 @@ var labelScore;
 var player;
 var pipes = [];
 var gameGravity = 400;
-var gameSpeed = 180;
+var gameSpeed = 200;
 var jumpPower = 150;
+var balloonGravity = 100;
+
 
 
 
@@ -22,10 +24,10 @@ var jumpPower = 150;
  * Loads all resources for the game and gives them names.
  */
 function preload() {
-  game.load.image("playerImg", "../assets/flappy.png");
+  game.load.image("playerImg", "../assets/hotdog old.png");
   game.load.audio("score", "../assets/point.ogg");
-  game.load.image("pipeBlock", "../assets/pipe_purple.png");
-
+  game.load.image("pipeBlock", "../assets/thanosnew.png");
+  game.load.image("balloons", "../assets/balloons.png");
 
 
 }
@@ -35,10 +37,10 @@ function preload() {
 function create() {
 
   game.stage.setBackgroundColor("#00ccff");
-  game.add.text(10, 10, "Flap");
-  game.add.text(450, 350, "to Rap");
-  game.add.text(10, 350, "its time");
-  game.add.text(450, 10, "Pap");
+  game.add.text(10, 10, "thanos");
+  game.add.text(450, 350, "run");
+  game.add.text(10, 350, "destroy you");
+  game.add.text(450, 10, "will ");
   player = game.add.sprite(50, 50,"playerImg");
   game.input.onDown.add(clickHandler);
   game.input
@@ -56,13 +58,11 @@ function create() {
   game.input.onDown.add(playerJump);
 
 
-
   var pipeInterval = 1.75 * Phaser.Timer.SECOND;
   game.time.events.loop(
   pipeInterval,
   generatePipe
   );
-
 
 
 
@@ -80,21 +80,18 @@ function update() {
   player,
   pipes,
   gameOver);
-  boundaryChecker()
-
-}
-
-function boundaryChecker(){
-  if (player.y < 0 ||400<player.y) {
+  if (player.y < 0 ||player.y > 400) {
   gameOver();
 }
 
 }
 
+
 function clickHandler(event) {
   game.add.sprite(event.x,event.y,"playerImg");
   changeScore();
   playerJump();
+
 }
 
 
@@ -157,3 +154,15 @@ function changeGravity(g){
 function gameOver(){
 location.reload();
 }
+
+
+function generateBalloons(){
+ var bonus = game.add.sprite(width, height, "balloons");
+ balloons.push(bonus);
+ game.physics.arcade.enable(bonus);
+ bonus.body.velocity.x = - 200;
+ bonus.body.velocity.y = - game.rnd.integerInRange(60, 100);
+}
+
+// function generate() {
+//  var diceRoll = game.rnd.integerInRange(1, 10);
