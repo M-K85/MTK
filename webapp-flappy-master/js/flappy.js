@@ -53,6 +53,8 @@ function create() {
 
   game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
   .onDown.add(playerJump);
+  game.input.onDown.add(playerJump);
+
 
 
   var pipeInterval = 1.75 * Phaser.Timer.SECOND;
