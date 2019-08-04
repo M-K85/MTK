@@ -24,7 +24,7 @@ var balloonGravity = 100;
  * Loads all resources for the game and gives them names.
  */
 function preload() {
-  game.load.image("playerImg", "../assets/hotdog old.png");
+  game.load.image("playerImg", "../assets/hotdog1.png");
   game.load.audio("score", "../assets/point.ogg");
   game.load.image("pipeBlock", "../assets/thanosnew.png");
   game.load.image("balloons", "../assets/balloons.png");
